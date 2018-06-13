@@ -13,18 +13,24 @@ void main(void){
 
 void CommonDenominator(void){
     int reminder = 1000;
-    int tmp_num, tmp_den = 1, tmp_;
+    int tmp_num, tmp_den = 1, tmp_, divident = 1000, cmd;
 
     tmp_num = numerator;
     tmp_den = denominator;
 
     while (reminder != 0){
+        divident = tmp_num/ tmp_den;
         reminder = tmp_num % tmp_den;
-        tmp_ = tmp_num;
+        printf("%d %d %d %d\n", tmp_num, tmp_den, divident, reminder);
+        if ( reminder == 0){
+            cmd = tmp_den;
+            printf("CMD: %d\n", cmd);
+            break;
+        }
         tmp_num = tmp_den;
-        tmp_den = tmp_ - tmp_den;
+        tmp_den = reminder;
     }
 
-    numerator %= tmp_den;
-    denominator %= tmp_den;
+    numerator   /=  cmd;
+    denominator /= cmd;
 }
